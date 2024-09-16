@@ -65,6 +65,7 @@ The following environment variables are used in this project:
 - `test:watch`: Run unit tests in watch mode
 - `test:cov`: Run unit tests with coverage
 - `test:debug`: Run unit tests in debug mode
+- `test:integration`: Set up integration tests
 - `test:e2e`: Run end-to-end tests
 - `migration:generate`: Generate a new migration
 - `typeorm:migration:run`: Run migrations
@@ -73,4 +74,11 @@ The following environment variables are used in this project:
 
 To run the tests, use the following command:
 ```sh
-npm test
+npm run test
+```
+
+To run the Integration tests using TestContainers, use the following command:
+```sh
+npm run test:integration
+```
+

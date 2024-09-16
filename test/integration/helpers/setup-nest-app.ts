@@ -38,11 +38,9 @@ export async function setupNestApp(
     database: pgContainer.getDatabase(),
     entities: [User],
     migrations: [`${__dirname}/../../../src/migrations/*{.ts,.js}`],
-    // logging: true,
   });
 
   await dataSource.initialize();
-  // Drop the existing database schema
   await dataSource.dropDatabase();
   await dataSource.runMigrations();
   await dataSource.destroy();
