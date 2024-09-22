@@ -1,5 +1,5 @@
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { setupPostgresContainer } from '../helpers/setup-postgres-container';
 import { setupNestApp } from '../helpers/setup-nest-app';
 import { StartedPostgreSqlContainer } from '@testcontainers/postgresql/build/postgresql-container';
