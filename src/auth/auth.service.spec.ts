@@ -3,7 +3,10 @@ import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '../users/users.entity';
-import { InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import {
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 describe('AuthService', () => {
@@ -13,7 +16,8 @@ describe('AuthService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService,
+      providers: [
+        AuthService,
         {
           provide: UsersService,
           useValue: {
@@ -26,7 +30,8 @@ describe('AuthService', () => {
           useValue: {
             signAsync: jest.fn(),
           },
-        }],
+        },
+      ],
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
@@ -55,7 +60,9 @@ describe('AuthService', () => {
     it('should throw UnauthorizedException if credentials are invalid', async () => {
       jest.spyOn(usersService, 'validateCredentials').mockResolvedValue(null);
 
-      await expect(authService.signIn('testuser', 'password')).rejects.toThrow(UnauthorizedException);
+      await expect(authService.signIn('testuser', 'password')).rejects.toThrow(
+        UnauthorizedException,
+      );
     });
   });
 
@@ -76,8 +83,9 @@ describe('AuthService', () => {
     it('should throw InternalServerErrorException if user creation fails', async () => {
       jest.spyOn(usersService, 'create').mockResolvedValue(null);
 
-      await expect(authService.signUp('testuser', 'password')).rejects.toThrow(InternalServerErrorException);
+      await expect(authService.signUp('testuser', 'password')).rejects.toThrow(
+        InternalServerErrorException,
+      );
     });
   });
-
 });
